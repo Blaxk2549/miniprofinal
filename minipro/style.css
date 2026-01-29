@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap');
+
+:root {
+    /* พื้นหลัง */
+    --primary-bg: #0f0f0f;
+    /* ดำเกือบสนิท (พื้นหลังเว็บ) */
+    --secondary-bg: #252525;
+    /* เทาเข้ม (พื้นหลังการ์ด/กล่อง) */
+
+    /* สีธีม */
+    --accent-color: #ff3b3b;
+    /* แดงสว่าง (อ่านง่ายกว่าแดงเลือดหมู) */
+    --accent-hover: #d32f2f;
+    /* แดงเข้มตอนเอาเมาส์ชี้ */
+
+    /* ตัวหนังสือ */
+    --text-main: #ffffff;
+    /* ขาวจั๊วะ (สำหรับหัวข้อ) */
+    --text-body: #e0e0e0;
+    /* ขาวควันบุหรี่ (สำหรับเนื้อหา อ่านสบายตา) */
+    --text-muted: #a0a0a0;
+    /* เทาสว่าง (สำหรับคำอธิบาย) */
+
+    --sidebar-width: 260px;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    /* เพิ่มระยะห่างบรรทัดให้อ่านง่าย */
+}
+
+/* --- การ์ดและกล่องข้อความ --- */
+.card,
+.card-custom,
+.stat-card,
+.login-card,
+.register-card,
+.settings-card {
+    background-color: var(--secondary-bg) !important;
+    border: 1px solid #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* เงาชัดขึ้น ให้ลอยเด่น */
+}
+
+/* --- ฟอร์มกรอกข้อมูล (Input) --- */
+.form-control,
+.form-select {
+    background-color: #333 !important;
+    /* พื้นหลังช่องกรอกสว่างขึ้น */
+    border: 1px solid #555 !important;
+    color: #fff !important;
+    /* ตัวหนังสือในช่องพิมพ์สีขาว */
+    padding: 10px 15px;
+    /* ช่องใหญ่ขึ้น พิมพ์ง่าย */
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #404040 !important;
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 59, 59, 0.25);
+}
+
+.form-control::placeholder {
+    color: #888 !important;
+    /* สี Placeholder ให้จางลงแต่อ่านออก */
+}
+
+/* --- ตาราง (Table) --- */
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--text-body);
+    --bs-table-border-color: #444;
+}
+
+.table thead th {
+    color: #fff;
+    background-color: #333;
+    /* หัวตารางสีชัดเจน */
+    border-bottom: 2px solid var(--accent-color);
+    font-weight: 500;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    color: var(--text-body);
+    /* เนื้อหาในตารางสีขาวควันบุหรี่ */
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* ไฮไลท์ตอนเอาเมาส์ชี้ */
+}
+
+/* --- ตัวหนังสือ (Typography) --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+    /* บังคับให้สีเทาสว่างขึ้น */
+}
+
+a {
+    text-decoration: none;
+}
+
+/* --- ปุ่ม --- */
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-outline-light {
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+.btn-outline-light:hover {
+    background-color: #444;
+    border-color: #444;
+}
+
+/* --- Sidebar (เมนูข้าง Admin) --- */
+.sidebar-logistics {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    background: #050505;
+    /* ดำเข้มกว่าพื้นหลัง */
+    border-right: 1px solid #333;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.sidebar-link {
+    color: #bbb;
+    /* สีเมนูปกติ */
+    padding: 12px 20px;
+    display: block;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    color: #fff;
+    /* สีเมนูตอน Active */
+    background: linear-gradient(90deg, rgba(255, 59, 59, 0.15) 0%, transparent 100%);
+    border-left-color: var(--accent-color);
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .sidebar-logistics {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-logistics.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
